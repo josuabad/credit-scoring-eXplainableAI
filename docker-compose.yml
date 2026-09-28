@@ -1,0 +1,17 @@
+services:
+  python-app:
+    image: python:3.12-slim
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - py_ml_pip_cache:/usr/local/lib/python3.12/site-packages
+    command: ["tail", "-f", "/dev/null"]
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: "6.0"
+    #       memory: 12G
+
+volumes:
+  py_ml_pip_cache:
+    external: true
